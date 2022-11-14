@@ -82,7 +82,7 @@ void block::zero_rotate(int index,int num) {
 		}
 		//もし、trueボックスが含まれなかった場合
 		//下端と右端に掛かっているか、左端に掛かっている場合
-		if ((contains_check(f_right)&&contains_check(f_under))||contains_check(f_right)) {
+		/*if ((contains_check(f_right)&&contains_check(f_under))||contains_check(f_right)) {
 			c_1 = index-1;
 			c_2 = index-1+w_space;
 			c_3 = index+w_space;
@@ -93,7 +93,14 @@ void block::zero_rotate(int index,int num) {
 			c_2 = index + w_space;
 			c_3 = index + w_space + 1;
 			c_4 = index + w_space + 2;
+		}*/
+		if ((contains_check(f_right) && contains_check(f_under)) || contains_check(f_right)) {
+			index = index - 1;
 		}
+			c_1 = index;
+			c_2 = index + w_space;
+			c_3 = index + w_space + 1;
+			c_4 = index + w_space + 2;
 		break;
 	case 1:
 		t_1 = index +w_space*2;
@@ -111,7 +118,7 @@ void block::zero_rotate(int index,int num) {
 			}
 		}
 		//もし、下端ブロックに当たっていれば、
-		if (contains_check(f_under)) {
+		/*if (contains_check(f_under)) {
 			c_1 = index+w_space;
 			c_2 = index +w_space+ 1;
 			c_3 = index + 1;
@@ -123,7 +130,17 @@ void block::zero_rotate(int index,int num) {
 			c_2 = index + w_space * 2 + 1;
 			c_3 = index + w_space+1;
 			c_4 = index + +1;
+		}*/
+		if (contains_check(f_under)) {
+			index = index - w_space;
 		}
+		
+			//もし、下端ブロックに当たっていなければ、
+			c_1 = index + w_space * 2;
+			c_2 = index + w_space * 2 + 1;
+			c_3 = index + w_space + 1;
+			c_4 = index + +1;
+		
 		break;
 	case 2:
 		//一時変数に移動先を定義
@@ -141,7 +158,7 @@ void block::zero_rotate(int index,int num) {
 				return;
 			}
 		}
-		if ((contains_check(f_right)&&contains_check(f_under))||contains_check(f_right)) {
+		/*if ((contains_check(f_right)&&contains_check(f_under))||contains_check(f_right)) {
 			c_1 = index-1;
 			c_2 = index;
 			c_3 = index + 1;
@@ -158,7 +175,20 @@ void block::zero_rotate(int index,int num) {
 			c_2 = index + 1;
 			c_3 = index + 2;
 			c_4 = index + 2 + w_space;
+		}*/
+		if ((contains_check(f_right) && contains_check(f_under)) || contains_check(f_right)) {
+			index = index - 1;
 		}
+		else if (contains_check(f_under)) {
+			index = index - w_space;
+
+		}
+		
+			c_1 = index;
+			c_2 = index + 1;
+			c_3 = index + 2;
+			c_4 = index + 2 + w_space;
+		
 		break;
 	case 3:
 		//一時変数に移動先を定義
@@ -176,12 +206,12 @@ void block::zero_rotate(int index,int num) {
 				return;
 			}
 		}
-		if (contains_check(f_under)) {
+		/*if (contains_check(f_under)) {
 			/*c_1 = index-w_space+1;
 			c_2 = index -w_space;
 			c_3 = index ;
 			c_4 = index + w_space;*/
-			c_1 = index - w_space;
+			/*c_1 = index - w_space;
 			c_2 = index - w_space+1;
 			c_3 = index;
 			c_4 = index+w_space;
@@ -191,7 +221,16 @@ void block::zero_rotate(int index,int num) {
 			c_2 = index+1;
 			c_3 = index + w_space;
 			c_4 = index + w_space * 2;
+		}*/
+		if (contains_check(f_under)) {
+			index = index - w_space;
 		}
+		
+			c_1 = index;
+			c_2 = index+1;
+			c_3 = index + w_space;
+			c_4 = index + w_space * 2;
+		
 		break;
 	default:
 		break;
